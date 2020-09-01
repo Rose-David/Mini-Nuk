@@ -1,0 +1,20 @@
+```
+Mini-Nuk Help commands list:
+
+n!help: I literally have no idea what this does.
+n!ping: pong
+n!rev: reverses text, USAGE: n!rev [text to reverse]
+n!rng: random number generator, creates a number in between 2 numbers, including those numbers, USAGE: n!rng [minimum maximum] (NO COMMA)
+n!dice: rolls a die, you must specify number of sides, USAGE: n!dice [number of sides]
+n!whoami: info about your discord account, USAGE: n!whoami
+n!whereami: info about the server you're in, USAGE: n!whereami
+n!avatar: grabs users' avatars. If no user is provided, it grabs yours. USAGE: n!avatar [users (optional)]
+n!8ball: reveals the secrets of the universe* USAGE: n!8ball [question]
+n!branch: tells you whether this is the beta bot or the normal bot. USAGE: n!branch
+
+Caps don't matter for commands, the bot reads all command names in lowercase
+If the bot replys with NaN, you typed something wrong (probably a space)
+*n!8ball does not actually reveal anything, it is literally random. plz dont sue
+
+Bot created by @randomtechguy#1777, if you need something, the support server code is fdcAdMY
+```
