@@ -16,6 +16,10 @@ const prefix = 'n!'
 const bannedStatements = process.env.BANNED_STATEMENTS
 const bannedStatementsArray = bannedStatements.split('   ')
 
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 for (const file of commandFiles) {
 	const command = require(`./commands/${file}`);
 
@@ -47,7 +51,9 @@ client.on("message", message => {
   const args = message.content.slice(prefix.length).split(' ');
   const commandName = args.shift().toLowerCase();
   
-  if (!client.commands.has(commandName)) return;
+  if (commandName.toLowerCase()=='stop') {command.stop(message, args, client)}
+
+  if (!client.commands.has(commandName)) return console.log("invalid command");
   const command = client.commands.get(commandName)
 
   if (command.guildOnly && message.channel.type !== 'text') {return message.reply('bruh this is my dms')}
