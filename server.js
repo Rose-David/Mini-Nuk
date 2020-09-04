@@ -35,6 +35,8 @@ client.on("ready", () => {
   console.log(`current status: ${client.user.presence.status}`);
 });
 
+process.on('unhandledRejection', error => console.error('Uncaught Promise Rejection', error));
+
 client.on("message", message => {
   if ((message.content==="<@494525821848125440>") || (message.content==='<@!494525821848125440>')) {
     return message.channel.send('you rang?')
@@ -88,4 +90,4 @@ const listener = expressApp.listen(process.env.PORT, () => {
   );
 });
 
-client.login(process.env.SECRET);
+client.login(process.env.TOKEN);
