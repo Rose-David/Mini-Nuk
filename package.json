@@ -3,7 +3,7 @@
   "//2": "https://docs.npmjs.com/files/package.json",
   "//3": "updating this file will download and update your packages",
   "name": "mini-nuk_rewritten",
-  "version": "0.0.101010111110101",
+  "version": "0.0.01100010 01110010 01110101 01101000",
   "description": "A simple discord bot, now with a useless front end built on Express.",
   "main": "server.js",
   "scripts": {
