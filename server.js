@@ -11,7 +11,7 @@ const fs = require('fs')
 client.commands = new Discord.Collection()
 
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
-const prefix = 'n!'
+const prefix = 'tn!'
 
 const bannedStatements = process.env.BANNED_STATEMENTS
 const bannedStatementsArray = bannedStatements.split('   ')
@@ -19,6 +19,8 @@ const bannedStatementsArray = bannedStatements.split('   ')
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
+
+const authorizationlist = process.env.AUTHORIZED_USERS.split(" | ")
 
 for (const file of commandFiles) {
 	const command = require(`./commands/${file}`);
@@ -30,7 +32,7 @@ for (const file of commandFiles) {
 
 client.on("ready", () => {
   client.user.setActivity(
-    "you weirdos | n!help",
+    "the seconds until i'm offline again | n!help",
     { type: "WATCHING" }
   );
   console.log(
@@ -57,6 +59,18 @@ client.on("message", message => {
   const command = client.commands.get(commandName)
 
   if (command.guildOnly && message.channel.type !== 'text') {return message.reply('bruh this is my dms')}
+  
+  if (command.shhSecret) {
+    if (authorizationlist.includes(message.author.id) !== true) {
+      console.log("wayment this ain't an admin")
+      message.channel.send('WHAT.')
+      message.channel.send('HOW?')
+      message.channel.send(`I don't know how, but ${message.author.tag} just found a secret command. Good job. Mention this to no one and *maybe* i'll let you use it`)
+      message.channel.send('***distantly:*** *bruh no way i was gon give them admin omegalol*')
+      console.log(`got mad angy at ${message.author.username} for finding out my secret.`)
+      return
+    }
+  }
 
   try {
 	  command.execute(message, args)
